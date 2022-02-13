@@ -2,18 +2,21 @@
 // Первоначальный массив можно ввести с клавиатуры, либо задать на старте выполнения алгоритма.
 
 string[] Array = { "abc", "abcd", "ab", "abcdf", "123r4t", "13" };
-string[] newArray = new string[Array.Length];
-var realSize = 0;
-foreach (var value in Array)
+string[] FormArray(string[] Array, int N)
 {
-    if (value.Length <= 3)
+    string[] newArray = new string[Array.Length];
+    var realSize = 0;
+    foreach (var value in Array)
     {
-        newArray[realSize] = value;
-        realSize++;
+        if (value.Length <= N)
+        {
+            newArray[realSize] = value;
+            realSize++;
+        }
     }
+    return newArray;
 }
 
-// В условии не написано вывести результат в терминал, поэтому нижние строки закомментировал.
-// for (int i = 0; i < newArray.Length; i++)
-//         Console.Write("{0} ", newArray[i]);
-//       Console.WriteLine();
+string[] newArray = FormArray(Array, 3);
+foreach (string i in newArray)
+Console.Write($"{i} ");
